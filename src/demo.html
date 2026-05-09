@@ -9,6 +9,9 @@
 html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;}
 </style>
 <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StudyCrew — Demo</title>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -29,6 +32,9 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-indigo-950 via-purple-950 to-orange-950 text-white">
+  <style>
+    .hidden{display:none;}
+  </style>
   <header class="px-6 py-5">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
@@ -36,8 +42,9 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
         <span class="font-extrabold text-lg">StudyCrew</span>
       </a>
       <nav class="hidden md:flex gap-6 text-sm opacity-90">
+        <a class="hover:opacity-100" href="index.html">首页</a>
         <a class="hover:opacity-100" href="about.html">理念</a>
-        <a class="hover:opacity-100" href="demo.html">Demo</a>
+        <a class="text-orange-300 font-bold" href="demo.html">Demo</a>
       </nav>
     </div>
   </header>
@@ -48,22 +55,32 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
         <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-start">
           <section class="flex-1">
             <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
-              试试看：让团队帮我备考
+              <span class="modeText">试试看：让团队帮我备考</span>
+              <span class="modeText hidden">试试看：让团队帮我规划升学</span>
             </h1>
             <p class="mt-3 text-white/80">
-              输入你的考试主题（例如：<span class="text-white">我周三考 IGCSE Physics Paper 4 力学</span>），5 个 Agent 会轮流输出：计划、速记、模拟题、错因诊断、家长周报。
+              <span class="modeText">输入你的考试主题（例如：<span class="text-white">我周三考 IGCSE Physics Paper 4 力学</span>），5 个 Agent 会轮流输出：计划、速记、模拟题、错因诊断、家长周报。</span>
+              <span class="modeText hidden">输入你的升学目标（例如：<span class="text-white">我读完 IGCSE 想申请英国医学/工程，A-Level 该怎么选？</span>），5 个 Agent 会轮流输出：36 个月时间线、选科三原则、情境题、误区诊断、家长谈话模板。</span>
             </p>
 
-            <div class="mt-6 grid gap-4">
+            <div class="mt-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="text-sm text-white/80">场景切换：</div>
+                <div class="flex rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+                  <button id="modeExam" class="px-4 py-2 text-sm bg-white/10 hover:bg-white/15 font-bold" type="button">场景 A：考试冲刺</button>
+                  <button id="modePathway" class="px-4 py-2 text-sm hover:bg-white/15" type="button">场景 B：升学选课</button>
+                </div>
+              </div>
+
+              <div class="grid gap-4">
+              
+              
               <label class="text-sm text-white/80">你的目标：</label>
               <div class="flex flex-col sm:flex-row gap-3">
                 <input id="studyTopic" class="flex-1 rounded-2xl bg-white/5 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-orange-300/70" placeholder="例如：我周三考 IGCSE Physics Paper 4 力学" />
                 <button id="runBtn" class="rounded-2xl bg-gradient-to-r from-orange-400 to-pink-500 px-5 py-3 font-bold hover:brightness-110 active:brightness-95 transition shadow">
                   开始轮流输出
                 </button>
-              </div>
-              <div class="text-xs text-white/60">
-                提示：本 Demo 目前重点覆盖 IGCSE/A-Level Physics 的 Paper 4 力学题型（含牛顿定律/力矩/功与能量）。
               </div>
             </div>
           </section>
@@ -72,14 +89,38 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
             <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
               <div class="font-bold text-white/90">团队轮播</div>
               <div class="mt-3 text-sm text-white/80 space-y-2">
-                <div class="flex items-center justify-between"><span>🗺️ Planner</span><span>72小时计划</span></div>
-                <div class="flex items-center justify-between"><span>📚 Tutor</span><span>3点速记</span></div>
-                <div class="flex items-center justify-between"><span>⚡ Drill</span><span>5题+答案</span></div>
-                <div class="flex items-center justify-between"><span>🩺 Critic</span><span>错因诊断</span></div>
-                <div class="flex items-center justify-between"><span>🧡 Coach</span><span>鼓励+周报</span></div>
+                <div class="flex items-center justify-between">
+                  <span>🗺️ Planner</span>
+                  <span class="modeText">考试冲刺：72小时计划</span>
+                  <span class="modeText hidden">升学选课：36 个月时间轴</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span>📚 Tutor</span>
+                  <span class="modeText">考试冲刺：3 点速记</span>
+                  <span class="modeText hidden">升学选课：选科三原则</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span>⚡ Drill</span>
+                  <span class="modeText">考试冲刺：5 题 + 答案</span>
+                  <span class="modeText hidden">升学选课：5 道情境题</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="modeText">🩺 Critic</span>
+                  <span class="modeText hidden">🎯 Pathway</span>
+                  <span class="modeText">考试冲刺：错因诊断</span>
+                  <span class="modeText hidden">升学选课：误区诊断</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span>🧡 Coach</span>
+                  <span class="modeText">考试冲刺：鼓励 + 周报</span>
+                  <span class="modeText hidden">升学选课：家长谈话模板</span>
+                </div>
               </div>
               <div class="mt-4 rounded-2xl bg-white/5 border border-white/10 p-3 text-xs text-white/70">
-                打字机效果会在每个 Agent 输出时自动开始。
+                <span class="modeText">考试冲刺</span><span class="modeText hidden">升学选课</span>模式下，5 个 Agent 会依次用打字机效果输出上述内容。
+              </div>
+              <div id="modeHint" class="mt-3 text-xs text-white/60">
+                当前：<span id="modeLabel">考试冲刺</span>
               </div>
             </div>
           </aside>
@@ -90,6 +131,9 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
             <div class="font-bold">输出区域</div>
             <div class="text-xs text-white/60">请向下滚动查看每个 Agent 的完整内容</div>
           </div>
+          <div class="text-sm text-white/70 mt-4">
+            👇 点击上方「开始轮流输出」或在输入框回车即可让 5 个 Agent 轮流发言
+          </div>
           <div id="chatLog" class="mt-4 grid gap-4"></div>
         </div>
       </div>
@@ -99,10 +143,16 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
   <footer class="px-6 py-8 border-t border-white/10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/70">
       <div>EasyClaw Hackathon 2026 提交作品</div>
-      <div class="font-bold text-white/80">@bostonlobster</div>
+      <div class="flex gap-4 flex-wrap items-center">
+        <a class="hover:opacity-100 underline-offset-4 hover:underline" href="index.html#for-parents">👨‍👩‍👧 家长咨询</a>
+        <a class="hover:opacity-100 underline-offset-4 hover:underline" href="index.html">回首页</a>
+        <a class="hover:opacity-100 underline-offset-4 hover:underline" href="about.html">看团队介绍</a>
+        <span class="font-bold text-white/80">@bostonlobster</span>
+      </div>
     </div>
   </footer>
 
-  <script src="src/js/demo.js" type="module"></script>
+  <script src="demo.js"></script>
+  <script>if (typeof attach === "function") attach();</script>
 </body>
 </html>

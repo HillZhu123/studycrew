@@ -19,11 +19,67 @@ function normalize(s) {
   return (s || "").toLowerCase().replace(/\s+/g, " ").trim();
 }
 
+function getMode() {
+  const sp = new URLSearchParams(location.search);
+  return sp.get("mode") || "exam";
+}
+
+function setModeUI(mode) {
+  const examBtn = $("#modeExam");
+  const pathwayBtn = $("#modePathway");
+  const modeLabel = $("#modeLabel");
+  const topicInput = $("#studyTopic");
+
+  const isPathway = mode === "pathway";
+  if (modeLabel) modeLabel.textContent = isPathway ? "升学选课" : "考试冲刺";
+
+  // placeholder / hint 根据 mode 实时更新
+  if (topicInput) {
+    topicInput.placeholder = isPathway
+      ? "例如：我读完 IGCSE 想申请英国医学/工程，A-Level 该怎么选？"
+      : "例如：我周三考 IGCSE Physics Paper 4 力学";
+  }
+
+  if (isPathway) {
+    if (examBtn) { examBtn.classList.remove("bg-white/10"); examBtn.classList.add("bg-transparent"); }
+    if (pathwayBtn) { pathwayBtn.classList.add("bg-white/10"); pathwayBtn.classList.remove("bg-transparent"); }
+  } else {
+    if (pathwayBtn) { pathwayBtn.classList.remove("bg-white/10"); pathwayBtn.classList.add("bg-transparent"); }
+    if (examBtn) { examBtn.classList.add("bg-white/10"); examBtn.classList.remove("bg-transparent"); }
+  }
+
+  // 按索引分组切换 .modeText：相邻两个 .modeText 构成一组，第 0 个=exam，第 1 个=pathway
+  // 基础偊设：每个容器里，成对出现的 .modeText 第一个是 exam 文案、第二个是 pathway 文案
+  // 为健壮性，直接遍历所有同父节点下的 .modeText 成对处理
+  const allMode = Array.from(document.querySelectorAll(".modeText"));
+  // 分组：按 parentNode 分组
+  const groups = new Map();
+  allMode.forEach(el => {
+    const p = el.parentNode;
+    if (!groups.has(p)) groups.set(p, []);
+    groups.get(p).push(el);
+  });
+  groups.forEach(els => {
+    els.forEach((el, idx) => {
+      const isExamSlot = idx % 2 === 0;
+      if (isPathway ? isExamSlot : !isExamSlot) {
+        el.classList.add("hidden");
+      } else {
+        el.classList.remove("hidden");
+      }
+    });
+  });
+}
+
 function detectTemplate(topic) {
   const t = normalize(topic);
   if (t.includes("physics") && t.includes("paper") && t.includes("4")) return "physics_paper4_mechanics";
   if (t.includes("力学") && (t.includes("paper 4") || t.includes("paper4") || t.includes("物理"))) return "physics_paper4_mechanics";
   return "physics_paper4_mechanics";
+}
+
+function detectPathwayTemplate() {
+  return "pathway_igcse_to_alevel";
 }
 
 function plannerPlan() {
@@ -91,32 +147,10 @@ function coachTemplate(template) {
   return template.coachTemplate;
 }
 
-async function runDemo() {
-  const topic = $("#studyTopic").value || "";
-  const container = $("#chatLog");
-  container.innerHTML = "";
-
-  const res = await fetch("data/demo_prompts.json");
-  const data = await res.json();
-
-  const key = detectTemplate(topic);
-  const tpl = data.templates[key] || data.templates.physics_paper4_mechanics;
-
-  const agents = data.agents;
-
-  const planner = plannerPlan().map(d => `**${d.day}**\n${d.items.map(x=>`- ${x}`).join("\n")}`).join("\n\n");
-  const tutor = tutorSummary(tpl).map(x=>`- ${x}`).join("\n");
-  const drills = drillQuestions(tpl).map((it, idx)=>`**${idx+1}. ${it.q.replace(/^（.*?\）/,'')}**\n答案：${it.a}`).join("\n\n");
-  const criticObj = criticAnalysis(tpl);
-  const critic = `第 2 题诊断（力矩）：\n${criticObj.q2}\n\n第 4 题诊断（净功/能量）：\n${criticObj.q4}\n\n通用修正：\n${criticObj.general}`;
-  const coach = coachTemplate(tpl).map(x=>`- ${x}`).join("\n");
-
-  const payloadByKey = { planner, tutor, drill: drills, critic, coach };
-  const order = ["planner","tutor","drill","critic","coach"];
-
+async function renderAgents(container, agents, order, payloadByKey) {
   for (const k of order) {
     const agent = agents.find(a => a.key === k);
-
+    if (!agent) continue;
     const card = document.createElement("div");
     card.className = "agentMsg";
     card.innerHTML = `
@@ -129,29 +163,107 @@ async function runDemo() {
       </div>
       <pre class="agentBody"></pre>
     `;
-
     container.appendChild(card);
     const body = card.querySelector(".agentBody");
-
-    const content = payloadByKey[k];
+    const content = payloadByKey[k] || "";
     const plain = content.replace(/\*\*(.*?)\*\*/g, "$1").replace(/`/g, "");
-
     await typingText(body, agent.linePrefix + "\n" + plain, 10);
     await sleep(220);
     card.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 }
 
+async function runDemo() {
+  const topic = $("#studyTopic").value || "";
+  const container = $("#chatLog");
+  container.innerHTML = "";
+
+  const mode = getMode();
+  setModeUI(mode);
+
+  const res = await fetch("data/demo_prompts.json");
+  const data = await res.json();
+
+  const key = mode === "pathway" ? detectPathwayTemplate() : detectTemplate(topic);
+  const tpl = data.templates[key] || data.templates.physics_paper4_mechanics;
+  const agents = data.agents;
+
+  if (mode === "pathway") {
+    const planner = [
+      "Month 1-3：IGCSE 归口（把薄弱点收束到可量化能力指标）",
+      "Month 4-9：AS 打底（选科匹配目标专业的学术前置）",
+      "Month 10-15：AS 跨科串联（同一能力在不同科目复用）",
+      "Month 16-21：A2 深化（按目标大学方向强化关键科链条）",
+      "Month 22-27：申请内容（从选科反推可讲的经历/项目）",
+      "Month 28-33：申请冲刺（整理材料、模拟问答与面试准备）",
+      "Month 34-36：复盘+提交（AS 期末（6-7 月）窗口后跟进）"
+    ].map(x=>`- ${x}`).join("\n");
+
+    const tutor = (tpl.corePoints || []).map(x=>`- ${x}`).join("\n");
+    const drills = (tpl.questions || []).map((it, idx)=>{
+      const q = (it.q || "").replace(/^\s*\(.*?\)\s*/,"");
+      return `**${idx+1}. ${q}**\n解析：${it.a || ""}`;
+    }).join("\n\n");
+    const pathway = (tpl.commonWrongReasons || []).map((x,i)=>`- 常见误区 ${i+1}：${x}`).join("\n");
+    const coach = (tpl.coachTemplate || []).map(x=>`- ${x}`).join("\n");
+
+    const payloadByKey = { planner, tutor, drill: drills, pathway, coach };
+    const order = ["planner","tutor","drill","pathway","coach"];
+    await renderAgents(container, agents, order, payloadByKey);
+    return;
+  }
+
+  // 场景 A：考试冲刺
+  const planner = plannerPlan().map(d => `**${d.day}**\n${d.items.map(x=>`- ${x}`).join("\n")}`).join("\n\n");
+  const tutor = tutorSummary(tpl).map(x=>`- ${x}`).join("\n");
+  const drills = drillQuestions(tpl).map((it, idx)=>`**${idx+1}. ${it.q.replace(/^（.*?\）/,'')}**\n答案：${it.a}`).join("\n\n");
+  const criticObj = criticAnalysis(tpl);
+  const critic = `第 2 题诊断（力矩）：\n${criticObj.q2}\n\n第 4 题诊断（净功/能量）：\n${criticObj.q4}\n\n通用修正：\n${criticObj.general}`;
+  const coach = coachTemplate(tpl).map(x=>`- ${x}`).join("\n");
+
+  const payloadByKey = { planner, tutor, drill: drills, critic, coach };
+  const order = ["planner","tutor","drill","critic","coach"];
+  await renderAgents(container, agents, order, payloadByKey);
+}
+
 function attach() {
   const btn = $("#runBtn");
   const topic = $("#studyTopic");
+
+  const examBtn = $("#modeExam");
+  const pathwayBtn = $("#modePathway");
+
+  if (!btn || !topic) {
+    console.error("attach(): missing #runBtn or #studyTopic", { btn: !!btn, topic: !!topic });
+    return;
+  }
+
   btn.addEventListener("click", runDemo);
   topic.addEventListener("keydown", (e)=>{ if (e.key === "Enter") runDemo(); });
+
+  const setUrlMode = (m) => {
+    const url = new URL(location.href);
+    url.searchParams.set("mode", m);
+    // 保持 autorun 不变
+    location.href = url.toString();
+  };
+
+  examBtn.addEventListener("click", ()=> setUrlMode("exam"));
+  pathwayBtn.addEventListener("click", ()=> setUrlMode("pathway"));
+
+  // 初始 UI 同步
+  setModeUI(getMode());
+
   // auto-run for screenshot / demo previews
   if (new URLSearchParams(location.search).get("autorun") === "1") {
-    topic.value = topic.value || "我周三考 IGCSE Physics Paper 4 力学";
+    const m = getMode();
+    if (m === "pathway") {
+      topic.value = topic.value || "我读完 IGCSE 后想申请医学/工程，怎么选 A-Level？";
+    } else {
+      topic.value = topic.value || "我周三考 IGCSE Physics Paper 4 力学";
+    }
     setTimeout(runDemo, 300);
   }
 }
 
-attach();
+if (typeof attach === "function") attach();
