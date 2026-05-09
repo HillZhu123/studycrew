@@ -5,6 +5,7 @@
 | v0  | 2026-05-09 11:54 | Hackathon submission (initial public release) |
 | v1  | 2026-05-09 15:37 | v3 Pathway mode extension (IGCSE → A-Level → UCAS 36-month) |
 | v5  | 2026-05-09 16:25 | Brand refresh: new SC logo, new pricing (¥28.9/79/289), new QR code, copy tweaks |
+| v6  | 2026-05-09 17:39 | Copy polish: full Chinese punctuation, centered footer bio, parent-form URL swap, removed "飞书多维表格" tag, de-tech'd demo copy |
 
 ## Missing snapshots
-- **v2, v3, v4** are NOT preserved. Between v1 and v5 the site was iteratively patched in-place (logo/QR swap fix, logo size tuning) without local snapshots. Only the three versions above have reliable source archives.
+- **v2, v3, v4** are NOT preserved. Between v1 and v5 the site was iteratively patched in-place (logo/QR swap fix, logo size tuning) without local snapshots.
