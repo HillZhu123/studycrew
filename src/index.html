@@ -13,7 +13,9 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StudyCrew — 你的 AI 学习数字团队</title>
+  <title>StudyCrew - 你的 AI 学习数字团队</title>
+  <link rel="icon" type="image/png" href="assets/img/studycrew-logo.png" />
+  <link rel="apple-touch-icon" href="assets/img/studycrew-logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .heroGlow { filter: drop-shadow(0 20px 60px rgba(249,115,22,.25)); }
@@ -30,8 +32,10 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
   <header class="px-6 py-5">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <span class="w-10 h-10 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center floaty">🦞</span>
-        <span class="font-extrabold text-lg">StudyCrew</span>
+        <span class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center overflow-hidden floaty">
+          <img src="assets/img/studycrew-logo.png" alt="StudyCrew" class="w-full h-full object-cover" />
+        </span>
+        <span class="font-extrabold text-xl">StudyCrew</span>
       </a>
       <nav class="hidden md:flex gap-6 text-sm opacity-90">
         <a class="hover:opacity-100" href="about.html">理念</a>
@@ -49,10 +53,10 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
               <span class="text-orange-300">●</span> 5 个 AI Agent 轮流输出
             </div>
             <h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight heroGlow">
-              StudyCrew — 你的 AI 学习数字团队
+              StudyCrew - 你的 AI 学习数字团队
             </h1>
             <p class="mt-4 text-white/80 text-base md:text-lg">
-              5 个 Agent 一起帮你打赢下一场考试：计划、速记、模拟题、错题诊断、情绪与周报。
+              5 个 Agent 一起帮你打赢下一场考试:计划、速记、模拟题、错题诊断、情绪与周报。
             </p>
 
             <div class="mt-7 flex flex-col sm:flex-row gap-3">
@@ -66,7 +70,7 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
 
             <div class="mt-6 text-sm text-white/70">
               <div class="flex items-center gap-2"><span>✨</span><span>适合 IGCSE/A-Level 学生的备考节奏</span></div>
-              <div class="flex items-center gap-2 mt-2"><span>🧠</span><span>Demo 在前端真实跑：轮流“说话”+打字机效果</span></div>
+              <div class="flex items-center gap-2 mt-2"><span>🧠</span><span>Demo 在前端真实跑:轮流"说话"+打字机效果</span></div>
             </div>
           </div>
 
@@ -114,7 +118,7 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
               </div>
 
               <div class="mt-5 text-xs text-white/60">
-                想看它真的在跑？点“立即体验”。
+                想看它真的再跑？点“立即体验”。
               </div>
             </div>
           </div>
@@ -125,7 +129,7 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
         <div class="flex items-end justify-between gap-4">
           <div>
             <h2 class="text-2xl md:text-3xl font-extrabold">团队介绍</h2>
-            <p class="mt-2 text-white/70">StudyCrew 不只做短期备考，还能做长期学业规划。</p>
+            <p class="mt-2 text-white/70">StudyCrew 不只做短期备考,还能做长期学业规划。</p>
           </div>
         </div>
 
@@ -137,7 +141,7 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
                 <div class="text-3xl">🧠</div>
                 <div>
                   <div class="font-extrabold">应对下一场考试</div>
-                  <div class="text-xs text-white/70 mt-1">考试冲刺：拆题型→练错因→稳节奏</div>
+                  <div class="text-xs text-white/70 mt-1">考试冲刺:拆题型→练错因→稳节奏</div>
                 </div>
               </div>
             </a>
@@ -147,7 +151,7 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
                 <div class="text-3xl">🎯</div>
                 <div>
                   <div class="font-extrabold">输入目标专业 → 36 个月选课路线 + 误区避坑</div>
-                  <div class="text-xs text-white/70 mt-1">按专业前置链条选科，并反推 UCAS 时间窗口</div>
+                  <div class="text-xs text-white/70 mt-1">按专业前置链条选科,并反推 UCAS 时间窗口</div>
                 </div>
               </div>
             </a>
@@ -159,31 +163,31 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
             <div class="text-3xl">🗺️</div>
             <div class="mt-2 font-extrabold">PlannerAgent</div>
             <div class="text-sm text-white/70 mt-1">把考试目标拆成 72 小时的时间块与行动清单。</div>
-            <div class="mt-3 text-xs text-white/70">“今天先铺路：做出你最稳的拿分路线。”</div>
+            <div class="mt-3 text-xs text-white/70">"今天先铺路:做出你最稳的拿分路线。"</div>
           </a>
           <a href="demo.html" class="cardPop block rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:bg-white/15">
             <div class="text-3xl">📚</div>
             <div class="mt-2 font-extrabold">TutorAgent</div>
             <div class="text-sm text-white/70 mt-1">讲懂关键概念 + 产出可复用的速记要点。</div>
-            <div class="mt-3 text-xs text-white/70">“先抓住公式背后的‘物理直觉’，再做题。”</div>
+            <div class="mt-3 text-xs text-white/70">"先抓住公式背后的'物理直觉',再做题。"</div>
           </a>
           <a href="demo.html" class="cardPop block rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:bg-white/15">
             <div class="text-3xl">⚡</div>
             <div class="mt-2 font-extrabold">DrillAgent</div>
-            <div class="text-sm text-white/70 mt-1">生成针对性练习，并给出答案，让你立刻知道哪里在掉分。</div>
-            <div class="mt-3 text-xs text-white/70">“今天只做能提升你的那一类题。”</div>
+            <div class="text-sm text-white/70 mt-1">生成针对性练习,并给出答案,让你立刻知道哪里在掉分。</div>
+            <div class="mt-3 text-xs text-white/70">"今天只做能提升你的那一类题。"</div>
           </a>
           <a href="demo.html" class="cardPop block rounded-3xl border border-white/10 bg-white/5 p-6 lg:col-span-1 transition hover:bg-white/15">
             <div class="text-3xl">🩺</div>
             <div class="mt-2 font-extrabold">CriticAgent</div>
-            <div class="text-sm text-white/70 mt-1">分析错因，把‘为什么错’拆成可修正的步骤。</div>
-            <div class="mt-3 text-xs text-white/70">“错题不是终点，是地图。”</div>
+            <div class="text-sm text-white/70 mt-1">分析错因,把'为什么错'拆成可修正的步骤。</div>
+            <div class="mt-3 text-xs text-white/70">"错题不是终点,是地图。"</div>
           </a>
           <a href="demo.html" class="cardPop block rounded-3xl border border-white/10 bg-white/5 p-6 sm:col-span-2 lg:col-span-2 transition hover:bg-white/15">
             <div class="text-3xl">🧡</div>
             <div class="mt-2 font-extrabold">CoachAgent</div>
-            <div class="text-sm text-white/70 mt-1">情绪鼓励 + 家长周报摘要，让节奏可追踪、可复盘。</div>
-            <div class="mt-3 text-xs text-white/70">“你不需要完美，你需要持续正确的动作。”</div>
+            <div class="text-sm text-white/70 mt-1">情绪鼓励 + 家长周报摘要,让节奏可追踪、可复盘。</div>
+            <div class="mt-3 text-xs text-white/70">"你不需要完美,你需要持续正确的动作。"</div>
           </a>
         </div>
       </section>
@@ -193,8 +197,8 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
           <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div>
               <div class="text-sm text-white/70">Demo 入场</div>
-              <h3 class="text-2xl md:text-3xl font-extrabold mt-2">试试看：让团队帮我备考</h3>
-              <p class="mt-2 text-white/70">在浏览器里直接跑起来：轮流输出、打字机效果、真实物理题内容。</p>
+              <h3 class="text-2xl md:text-3xl font-extrabold mt-2">试试看:让团队帮我备考</h3>
+              <p class="mt-2 text-white/70">在浏览器里直接跑起来:轮流输出、打字机效果、真实物理题内容。</p>
             </div>
             <a href="demo.html" class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-orange-400 to-pink-500 px-7 py-4 font-bold hover:brightness-110 active:brightness-95 transition shadow">
               进入 Demo
@@ -209,17 +213,17 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
             <div class="text-3xl">🤝</div>
             <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3 py-1 text-xs text-white/80">给家长</div>
           </div>
-          <h3 class="text-2xl md:text-3xl font-extrabold">想让 StudyCrew 真正陪孩子备考？</h3>
+          <h3 class="text-2xl md:text-3xl font-extrabold">想让 StudyCrew 真正陪孩子备考?</h3>
           <p class="mt-3 text-white/80 max-w-3xl">
-            Demo 只是一个给你看的“彩排”。真实版 StudyCrew 的 5 个 Agent 会接入孩子的具体课表、错题本、考试目标，每周给家长一份可追踪的进度周报。
-            欢迎预约试听、询问订阅方案，或加入 StudyCrew 的产品交流群先关注更新。
+            Demo 只是一个给你看的"彩排"。真实版 StudyCrew 的 5 个 Agent 会接入孩子的具体课表、错题本、考试目标,每周给家长一份可追踪的进度周报。
+            欢迎预约试听、询问订阅方案,或加入 StudyCrew 的产品交流群先关注更新。
           </p>
 
           <div class="mt-6 grid md:grid-cols-3 gap-4">
             <a href="https://acn3d05dpqvp.feishu.cn/base/Cvn1beRbOabjcXsg1TWc5fTxn7b" target="_blank" rel="noopener" class="block rounded-2xl bg-gradient-to-br from-orange-500/30 to-pink-500/20 border border-orange-400/40 p-5 hover:brightness-110 transition">
               <div class="text-2xl">📝</div>
               <div class="mt-2 font-extrabold">在线登记</div>
-              <div class="mt-1 text-sm text-white/80">填家长咨询表，我们 24h 内联系你</div>
+              <div class="mt-1 text-sm text-white/80">填家长咨询表,我们 24h 内联系你</div>
               <div class="mt-3 text-xs text-orange-200">推荐 → 飞书多维表格</div>
             </a>
             <a href="mailto:h61187818@gmail.com?subject=StudyCrew%20家长咨询" class="block rounded-2xl bg-white/5 border border-white/10 p-5 hover:bg-white/10 transition">
@@ -232,14 +236,14 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
               <div class="text-2xl">💬</div>
               <div class="mt-2 font-extrabold">加微信直联</div>
               <div class="mt-1 text-sm text-white/80 font-mono">HillZHU_0508</div>
-              <div class="mt-3 text-xs text-white/60">请备注：StudyCrew 家长咨询</div>
+              <div class="mt-3 text-xs text-white/60">请备注:StudyCrew 家长咨询</div>
             </div>
           </div>
 
           <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
             <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-              <div class="font-extrabold text-lg">付费方案（预计）</div>
-              <p class="mt-2 text-xs text-white/60">自动续费比手动续费便宜 ¥10/月（按实际周期折算）</p>
+              <div class="font-extrabold text-lg">付费方案</div>
+              <p class="mt-2 text-xs text-white/60">开启自动续费：月省 1 元 · 季省 10 元 · 年省 40 元</p>
 
               <div class="mt-4">
                 <div class="text-white font-bold">🆓 体验包</div>
@@ -249,33 +253,36 @@ html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC",
               <div class="mt-4 grid grid-cols-2 gap-2 text-sm">
                 <div class="rounded-xl bg-white/5 border border-white/10 p-3">
                   <div class="font-bold">月卡</div>
-                  <div class="mt-1 text-white/80">自动续费 <b class="text-orange-300">¥289</b>/月</div>
-                  <div class="text-white/60">手动续费 ¥299/月</div>
+                  <div class="mt-1 text-white/80">自动 <b class="text-orange-300">¥28.9</b>/月</div>
+                  <div class="text-white/60">手动 ¥29.9/月</div>
+                  <div class="mt-1 text-[11px] text-orange-300/90">自动省 ¥1</div>
                 </div>
                 <div class="rounded-xl bg-white/5 border border-white/10 p-3">
-                  <div class="font-bold">季卡（3 月）</div>
-                  <div class="mt-1 text-white/80">自动续费 <b class="text-orange-300">¥769</b>/季</div>
-                  <div class="text-white/60">手动续费 ¥799/季</div>
+                  <div class="font-bold">季卡(3 月)</div>
+                  <div class="mt-1 text-white/80">自动 <b class="text-orange-300">¥79</b>/季 <span class="text-white/50">(¥26.3/月)</span></div>
+                  <div class="text-white/60">手动 ¥89/季 <span class="text-white/40">(¥29.7/月)</span></div>
+                  <div class="mt-1 text-[11px] text-orange-300/90">自动省 ¥10</div>
                 </div>
                 <div class="rounded-xl bg-white/5 border border-white/10 p-3 col-span-2 relative">
                   <div class="absolute -top-2 right-3 bg-orange-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">省最多</div>
-                  <div class="font-bold">年卡（12 月）</div>
-                  <div class="mt-1 text-white/80">自动续费 <b class="text-orange-300">¥2879</b>/年（合 ¥239.9/月）</div>
-                  <div class="text-white/60">手动续费 ¥2999/年（合 ¥249.9/月）</div>
+                  <div class="font-bold">年卡(12 月)</div>
+                  <div class="mt-1 text-white/80">自动 <b class="text-orange-300">¥289</b>/年(合 ¥24.1/月)</div>
+                  <div class="text-white/60">手动 ¥329/年(合 ¥27.4/月)</div>
+                  <div class="mt-1 text-[11px] text-orange-300/90">自动省 ¥40</div>
                 </div>
               </div>
 
               <ul class="mt-4 space-y-1 text-xs text-white/70">
-                <li>• 月/季/年卡均含：不限科目 · 每周 1 份家长周报 · 无限题库</li>
-                <li>• <b>升学全程包</b>：仅年卡付费用户赠送完整 IGCSE→A-Level→UCAS 36 个月规划</li>
-                <li>• <b>1～1 咨询</b>：专人服务，报价依需求而定，欢迎预约试听</li>
-                <li>• 随时可在个人中心关闭自动续费，无手续费</li>
+                <li>• 月/季/年卡均含:不限科目 · 每周 1 份家长周报 · 无限题库</li>
+                <li>• <b>升学全程包</b>:仅年卡付费用户赠送完整 IGCSE→A-Level→UCAS 36 个月规划</li>
+                <li>• <b>1~1 咨询</b>:专人服务,报价依需求而定,欢迎预约试听</li>
+                <li>• 随时可在个人中心关闭自动续费,无手续费</li>
               </ul>
             </div>
             <div class="rounded-2xl bg-white/5 border border-white/10 p-4 flex flex-col items-center">
-              <div class="w-full text-sm text-white/80 font-bold text-center pb-3">购买后联系方式 · 飞书交流群</div>
+              <div class="w-full text-sm text-white/80 font-bold text-center pb-3">扫码加入 · StudyCrew 产品交流群</div>
               <img src="assets/img/studycrew-feishu-qr.png" alt="StudyCrew 产品交流群二维码" class="rounded-xl w-full max-w-[260px] bg-white p-2" />
-              <div class="mt-3 text-xs text-white/60">仅限企业内部成员加入 · 永久有效</div>
+              <div class="mt-3 text-xs text-white/60">飞书扫码加入 · 永久有效</div>
             </div>
           </div>
         </div>
