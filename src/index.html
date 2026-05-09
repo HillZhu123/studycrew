@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<style>
+@font-face { font-family:"Noto Sans SC"; font-style:normal; font-weight:400; font-display:swap;
+  src:url("/assets/fonts/NotoSansSC-400.woff2") format("woff2"); }
+@font-face { font-family:"Noto Sans SC"; font-style:normal; font-weight:700; font-display:swap;
+  src:url("/assets/fonts/NotoSansSC-700.woff2") format("woff2"); }
+html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;}
+</style>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyCrew — 你的 AI 学习数字团队</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .heroGlow { filter: drop-shadow(0 20px 60px rgba(249,115,22,.25)); }
+    .fadeIn { animation: fadeIn .65s ease both; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform: translateY(0);} }
+    .cardPop { transition: transform .25s ease, box-shadow .25s ease; }
+    .cardPop:hover { transform: translateY(-3px) rotate(-.4deg); box-shadow: 0 18px 60px rgba(0,0,0,.18); }
+    .floaty { animation: floaty 4.5s ease-in-out infinite; }
+    @keyframes floaty { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-6px);} }
+    .typing { border-right: 2px solid rgba(255,255,255,.7); }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-indigo-950 via-purple-950 to-orange-950 text-white">
+  <header class="px-6 py-5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center floaty">🦞</span>
+        <span class="font-extrabold text-lg">StudyCrew</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm opacity-90">
+        <a class="hover:opacity-100" href="about.html">理念</a>
+        <a class="hover:opacity-100" href="demo.html">Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-6 pb-14">
+    <div class="max-w-6xl mx-auto">
+      <section class="fadeIn pt-6">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-2 text-sm text-white/80">
+              <span class="text-orange-300">●</span> 5 个 AI Agent 轮流输出
+            </div>
+            <h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight heroGlow">
+              StudyCrew — 你的 AI 学习数字团队
+            </h1>
+            <p class="mt-4 text-white/80 text-base md:text-lg">
+              5 个 Agent 一起帮你打赢下一场考试：计划、速记、模拟题、错题诊断、情绪与周报。
+            </p>
+
+            <div class="mt-7 flex flex-col sm:flex-row gap-3">
+              <a href="demo.html" class="rounded-2xl bg-gradient-to-r from-orange-400 to-pink-500 px-6 py-3 font-bold hover:brightness-110 active:brightness-95 transition shadow">
+                立即体验
+              </a>
+              <a href="about.html" class="rounded-2xl bg-white/5 border border-white/10 px-6 py-3 font-bold hover:bg-white/10 transition">
+                了解团队
+              </a>
+            </div>
+
+            <div class="mt-6 text-sm text-white/70">
+              <div class="flex items-center gap-2"><span>✨</span><span>适合 IGCSE/A-Level 学生的备考节奏</span></div>
+              <div class="flex items-center gap-2 mt-2"><span>🧠</span><span>Demo 在前端真实跑：轮流“说话”+打字机效果</span></div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-orange-400/20 blur-2xl"></div>
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-pink-500/20 blur-2xl"></div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 cardPop">
+              <div class="flex items-center justify-between">
+                <div class="font-bold">团队状态</div>
+                <div class="text-xs text-white/60">Live demo</div>
+              </div>
+              <div class="mt-5 grid grid-cols-2 gap-4">
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <div class="text-2xl">🗺️</div>
+                  <div class="font-bold mt-1 text-sm">Planner</div>
+                  <div class="text-xs text-white/70">72小时计划</div>
+                </div>
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <div class="text-2xl">📚</div>
+                  <div class="font-bold mt-1 text-sm">Tutor</div>
+                  <div class="text-xs text-white/70">核心速记</div>
+                </div>
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <div class="text-2xl">⚡</div>
+                  <div class="font-bold mt-1 text-sm">Drill</div>
+                  <div class="text-xs text-white/70">5题+答案</div>
+                </div>
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <div class="text-2xl">🩺</div>
+                  <div class="font-bold mt-1 text-sm">Critic</div>
+                  <div class="text-xs text-white/70">错因诊断</div>
+                </div>
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-4 col-span-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="text-2xl">🧡</div>
+                      <div>
+                        <div class="font-bold text-sm">Coach</div>
+                        <div class="text-xs text-white/70">鼓励 + 周报摘要</div>
+                      </div>
+                    </div>
+                    <div class="text-xs text-orange-200 bg-orange-400/20 border border-orange-300/30 px-3 py-1 rounded-full">Ready</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 text-xs text-white/60">
+                想看它真的在跑？点“立即体验”。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12 fadeIn">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold">团队介绍</h2>
+            <p class="mt-2 text-white/70">5 个角色，各自擅长一件事，让学习变得更像“团队作战”。</p>
+          </div>
+        </div>
+
+        <div class="mt-7 grid md:grid-cols-3 gap-4">
+          <div class="cardPop rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="text-3xl">🗺️</div>
+            <div class="mt-2 font-extrabold">PlannerAgent</div>
+            <div class="text-sm text-white/70 mt-1">把考试目标拆成 72 小时的时间块与行动清单。</div>
+            <div class="mt-3 text-xs text-white/70">“今天先铺路：做出你最稳的拿分路线。”</div>
+          </div>
+          <div class="cardPop rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="text-3xl">📚</div>
+            <div class="mt-2 font-extrabold">TutorAgent</div>
+            <div class="text-sm text-white/70 mt-1">讲懂关键概念 + 产出可复用的速记要点。</div>
+            <div class="mt-3 text-xs text-white/70">“先抓住公式背后的‘物理直觉’，再做题。”</div>
+          </div>
+          <div class="cardPop rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="text-3xl">⚡</div>
+            <div class="mt-2 font-extrabold">DrillAgent</div>
+            <div class="text-sm text-white/70 mt-1">生成针对性练习，并给出答案，让你立刻知道哪里在掉分。</div>
+            <div class="mt-3 text-xs text-white/70">“今天只做能提升你的那一类题。”</div>
+          </div>
+          <div class="cardPop rounded-3xl border border-white/10 bg-white/5 p-6 md:col-span-1">
+            <div class="text-3xl">🩺</div>
+            <div class="mt-2 font-extrabold">CriticAgent</div>
+            <div class="text-sm text-white/70 mt-1">分析错因，把‘为什么错’拆成可修正的步骤。</div>
+            <div class="mt-3 text-xs text-white/70">“错题不是终点，是地图。”</div>
+          </div>
+          <div class="cardPop rounded-3xl border border-white/10 bg-white/5 p-6 md:col-span-2">
+            <div class="text-3xl">🧡</div>
+            <div class="mt-2 font-extrabold">CoachAgent</div>
+            <div class="text-sm text-white/70 mt-1">情绪鼓励 + 家长周报摘要，让节奏可追踪、可复盘。</div>
+            <div class="mt-3 text-xs text-white/70">“你不需要完美，你需要持续正确的动作。”</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12 fadeIn">
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-7 md:p-10">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+            <div>
+              <div class="text-sm text-white/70">Demo 入场</div>
+              <h3 class="text-2xl md:text-3xl font-extrabold mt-2">试试看：让团队帮我备考</h3>
+              <p class="mt-2 text-white/70">在浏览器里直接跑起来：轮流输出、打字机效果、真实物理题内容。</p>
+            </div>
+            <a href="demo.html" class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-orange-400 to-pink-500 px-7 py-4 font-bold hover:brightness-110 active:brightness-95 transition shadow">
+              进入 Demo
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="px-6 py-8 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/70">
+      <div>EasyClaw Hackathon 2026 提交作品</div>
+      <div class="font-bold text-white/80">@bostonlobster</div>
+    </div>
+  </footer>
+</body>
+</html>

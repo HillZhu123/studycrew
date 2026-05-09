@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<style>
+@font-face { font-family:"Noto Sans SC"; font-style:normal; font-weight:400; font-display:swap;
+  src:url("/assets/fonts/NotoSansSC-400.woff2") format("woff2"); }
+@font-face { font-family:"Noto Sans SC"; font-style:normal; font-weight:700; font-display:swap;
+  src:url("/assets/fonts/NotoSansSC-700.woff2") format("woff2"); }
+html,body,button,input,textarea,select{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;}
+</style>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyCrew — 理念与技术</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fadeIn { animation: fadeIn .65s ease both; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform: translateY(0);} }
+    .cardPop { transition: transform .25s ease, box-shadow .25s ease; }
+    .cardPop:hover { transform: translateY(-3px); rotate(-.3deg); box-shadow: 0 18px 60px rgba(0,0,0,.18); }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-indigo-950 via-purple-950 to-orange-950 text-white">
+  <header class="px-6 py-5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center">🦞</span>
+        <span class="font-extrabold text-lg">StudyCrew</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm opacity-90">
+        <a class="hover:opacity-100" href="about.html">理念</a>
+        <a class="hover:opacity-100" href="demo.html">Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-6 pb-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="fadeIn rounded-3xl border border-white/10 bg-white/5 p-6 md:p-10">
+        <h1 class="text-3xl md:text-4xl font-extrabold">我们的理念</h1>
+        <p class="mt-3 text-white/80">
+          学习不是“听懂就结束”，而是计划-训练-复盘-再行动的闭环。
+          StudyCrew 把这件事拆成 5 个角色：让不同能力的人（或说不同视角）轮流接管你的备考。
+        </p>
+
+        <div class="mt-8 grid md:grid-cols-2 gap-4">
+          <div class="cardPop rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="font-extrabold text-lg">为什么是多 Agent？</div>
+            <ul class="mt-3 text-sm text-white/75 space-y-2">
+              <li>单一 AI 更擅长解释，但不一定能把学习拆成可执行动作。</li>
+              <li>不同阶段需要不同“节奏”：计划、讲解、练题、诊断、情绪支持。</li>
+              <li>把输出拆开，你就更容易发现：哪里没准备、哪里没练透、哪里没复盘。</li>
+            </ul>
+          </div>
+
+          <div class="cardPop rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="font-extrabold text-lg">技术实现（比赛可跑）</div>
+            <div class="mt-3 text-sm text-white/75 leading-relaxed">
+              全站为 <b>纯静态 HTML + Tailwind CDN + Vanilla JS</b>。
+              Demo 读取预置 JSON 数据，按固定顺序让 5 个 Agent 轮流输出，并带打字机效果。
+              无需构建工具（符合 CWS 静态部署要求）。
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="font-extrabold text-lg">团队 5 人分工（速览）</div>
+          <div class="mt-4 grid md:grid-cols-3 gap-4">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <div class="text-2xl">🗺️</div>
+              <div class="font-bold mt-1">PlannerAgent</div>
+              <div class="text-xs text-white/70 mt-1">72小时倒计时作战计划</div>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <div class="text-2xl">📚</div>
+              <div class="font-bold mt-1">TutorAgent</div>
+              <div class="text-xs text-white/70 mt-1">知识点速记 + 例题引导</div>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <div class="text-2xl">⚡</div>
+              <div class="font-bold mt-1">DrillAgent</div>
+              <div class="text-xs text-white/70 mt-1">模拟题生成与即时答案</div>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <div class="text-2xl">🩺</div>
+              <div class="font-bold mt-1">CriticAgent</div>
+              <div class="text-xs text-white/70 mt-1">错因拆解 + 薄弱点修正</div>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4 md:col-span-2">
+              <div class="text-2xl">🧡</div>
+              <div class="font-bold mt-1">CoachAgent</div>
+              <div class="text-xs text-white/70 mt-1">鼓励话术 + 家长周报摘要</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="demo.html" class="rounded-2xl bg-gradient-to-r from-orange-400 to-pink-500 px-6 py-3 font-bold hover:brightness-110 active:brightness-95 transition shadow">立即进入 Demo</a>
+          <a href="index.html" class="rounded-2xl bg-white/5 border border-white/10 px-6 py-3 font-bold hover:bg-white/10 transition">回到首页</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="px-6 py-8 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/70">
+      <div>EasyClaw Hackathon 2026 提交作品</div>
+      <div class="font-bold text-white/80">@bostonlobster</div>
+    </div>
+  </footer>
+</body>
+</html>
